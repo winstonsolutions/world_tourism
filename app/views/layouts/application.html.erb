@@ -12,7 +12,7 @@
   </head>
 
   <body>
-    <!-- 导航菜单 -->
+    <!-- Navigation Menu -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
       <div class="container">
         <a class="navbar-brand" href="<%= root_path %>">World Tourism</a>
@@ -28,7 +28,7 @@
               <a class="nav-link" href="<%= about_path %>">About</a>
             </li>
           </ul>
-          <!-- 搜索表单 -->
+          <!-- Search Form -->
           <form class="d-flex ms-auto" action="<%= search_path %>" method="get">
             <select name="category" class="form-select me-2" style="width: 120px;">
               <option value="">All</option>
@@ -43,14 +43,14 @@
       </div>
     </nav>
     
-    <!-- 将主要内容包裹在 main 标签内 -->
+    <!-- Wrap main content in main tag -->
     <main>
       <div class="container">
         <%= yield %>
       </div>
     </main>
     
-    <!-- 添加页脚部分 -->
+    <!-- Footer section -->
     <footer>
       <div class="container text-center">
         <p>© 2025 World Tourism Explorer</p>
