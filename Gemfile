@@ -58,3 +58,8 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+gem 'faker'          # 用于生成虚构数据
+gem 'kaminari'       # 用于分页
+gem 'bootstrap', '~> 5.3.0'  # 用于样式
+gem 'sassc-rails'    # 用于Sass支持
