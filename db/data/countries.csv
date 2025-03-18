@@ -1,0 +1,17 @@
+name,continent,currency,language
+United States,North America,USD,English
+Canada,North America,CAD,English
+Mexico,North America,MXN,Spanish
+United Kingdom,Europe,GBP,English
+France,Europe,EUR,French
+Germany,Europe,EUR,German
+Italy,Europe,EUR,Italian
+Spain,Europe,EUR,Spanish
+China,Asia,CNY,Mandarin
+Japan,Asia,JPY,Japanese
+India,Asia,INR,Hindi
+Australia,Oceania,AUD,English
+Brazil,South America,BRL,Portuguese
+Argentina,South America,ARS,Spanish
+Egypt,Africa,EGP,Arabic
+South Africa,Africa,ZAR,Multiple
