@@ -59,7 +59,7 @@ group :test do
   gem "selenium-webdriver"
 end
 
-gem 'faker'          # 用于生成虚构数据
-gem 'kaminari'       # 用于分页
-gem 'bootstrap', '~> 5.3.0'  # 用于样式
-gem 'sassc-rails'    # 用于Sass支持
+gem 'faker'          # For generating fake data
+gem 'kaminari'       # For pagination
+gem 'bootstrap', '~> 5.3.0'  # For styling
+gem 'sassc-rails'    # For Sass support
