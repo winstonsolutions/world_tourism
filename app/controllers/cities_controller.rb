@@ -6,6 +6,6 @@ class CitiesController < ApplicationController
 
   def show
     @city = City.find(params[:id])
-    @attractions = @city.attractions.order(:name).page(params[:page]).per(5)
+    @attractions = @city.attractions.order(:name).page(params[:page]).per(4)
   end
 end
