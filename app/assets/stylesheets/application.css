@@ -39,3 +39,17 @@ footer {
   text-align: center;    /* 居中文本 */
   margin-top: 20px;      /* 与上方内容保持一定间距 */
 }
+
+/* Artistic brand styling */
+.artistic-brand {
+  font-family: 'Pacifico', cursive; /* Use the imported Google Font */
+  font-size: 1.8rem; /* Make the font slightly larger */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Add a subtle shadow for depth */
+  letter-spacing: 1px; /* Add slight spacing between letters */
+  transition: all 0.3s ease; /* Smooth transition for hover effects */
+}
+
+.artistic-brand:hover {
+  transform: scale(1.05); /* Slightly grow on hover */
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4); /* Enhanced shadow on hover */
+}
