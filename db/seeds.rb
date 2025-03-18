@@ -19,7 +19,7 @@ end
 
 puts "Created #{Country.count} countries"
 
-# 预定义主要国家的城市
+# Predefined cities for major countries
 city_data = {
   'United States' => {
     capital: 'Washington D.C.',
@@ -87,7 +87,7 @@ city_data = {
   }
 }
 
-# 国家到Faker语言环境的映射
+# Mapping of countries to Faker locales
 locale_map = {
   'France' => 'fr',
   'Germany' => 'de',
@@ -102,8 +102,8 @@ puts "Creating cities..."
 countries = Country.all
 countries.each do |country|
   if city_data.key?(country.name)
-    # 使用预定义城市数据
-    # 创建首都
+    # Use predefined city data
+    # Create the capital
     City.create!(
       name: city_data[country.name][:capital],
       is_capital: true,
@@ -111,7 +111,7 @@ countries.each do |country|
       country: country
     )
     
-    # 创建随机数量的其他城市（3-7个）
+    # Create a random number of other cities (3-7)
     city_data[country.name][:cities].sample(rand(3..7)).each do |city_name|
       City.create!(
         name: city_name,
@@ -121,10 +121,10 @@ countries.each do |country|
       )
     end
   else
-    # 对于没有预定义城市的国家，使用Faker（尽可能使用本地化）
+    # For countries without predefined cities, use Faker (with localization when possible)
     locale = locale_map[country.name] || 'en'
     
-    # 创建首都（对于没有预定义数据的国家）
+    # Create the capital (for countries without predefined data)
     capital_name = "Capital of #{country.name}"
     if locale == 'en'
       capital_name = Faker::Address.unique.city
@@ -132,7 +132,7 @@ countries.each do |country|
       begin
         capital_name = Faker::Address.unique.city(locale: locale)
       rescue
-        capital_name = Faker::Address.unique.city # 回退到英语
+        capital_name = Faker::Address.unique.city # Fallback to English
       end
     end
     
@@ -143,7 +143,7 @@ countries.each do |country|
       country: country
     )
     
-    # 创建其他城市（2-5个）
+    # Create other cities (2-5)
     rand(2..5).times do
       city_name = if locale == 'en'
                     Faker::Address.unique.city
@@ -151,7 +151,7 @@ countries.each do |country|
                     begin
                       Faker::Address.unique.city(locale: locale)
                     rescue
-                      Faker::Address.unique.city # 回退到英语
+                      Faker::Address.unique.city # Fallback to English
                     end
                   end
       
