@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get "search/index"
+  get "pages/about"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -11,4 +13,20 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+  root 'countries#index'
+  
+  get 'about', to: 'pages#about'
+  
+  resources :countries, only: [:index, :show] do
+    resources :cities, only: [:index]
+  end
+  
+  resources :cities, only: [:show] do
+    resources :attractions, only: [:index]
+  end
+  
+  resources :attractions, only: [:show]
+  
+  # 搜索路由
+  get 'search', to: 'search#index'
 end

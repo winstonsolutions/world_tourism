@@ -1,0 +1,24 @@
+<h1>Explore Countries</h1>
+
+<div class="row">
+  <% @countries.each do |country| %>
+    <div class="col-md-4 mb-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title"><%= country.name %></h5>
+          <p class="card-text">
+            <strong>Continent:</strong> <%= country.continent %><br>
+            <strong>Currency:</strong> <%= country.currency %><br>
+            <strong>Language:</strong> <%= country.language %><br>
+            <strong>Cities:</strong> <%= country.cities.count %>
+          </p>
+          <%= link_to "Explore", country_path(country), class: "btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<div class="d-flex justify-content-center mt-4">
+  <%= paginate @countries %>
+</div>

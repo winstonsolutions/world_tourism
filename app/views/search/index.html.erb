@@ -1,0 +1,122 @@
+<h1>Search Results</h1>
+
+<% if @query.present? %>
+  <p>Showing results for: <strong><%= @query %></strong> 
+  <% if @category.present? %>
+    in category: <strong><%= @category.capitalize %></strong>
+  <% end %>
+  </p>
+  
+  <% if @category.present? %>
+    <% if @results.any? %>
+      <div class="row">
+        <% @results.each do |result| %>
+          <div class="col-md-4 mb-4">
+            <div class="card">
+              <div class="card-body">
+                <% case @category %>
+                <% when 'countries' %>
+                  <h5 class="card-title"><%= result.name %></h5>
+                  <p class="card-text">
+                    <strong>Continent:</strong> <%= result.continent %><br>
+                    <strong>Language:</strong> <%= result.language %>
+                  </p>
+                  <%= link_to "View Details", country_path(result), class: "btn btn-primary" %>
+                <% when 'cities' %>
+                  <h5 class="card-title"><%= result.name %></h5>
+                  <p class="card-text">
+                    <strong>Country:</strong> <%= result.country.name %><br>
+                    <strong>Population:</strong> <%= number_with_delimiter(result.population) %>
+                  </p>
+                  <%= link_to "View Details", city_path(result), class: "btn btn-primary" %>
+                <% when 'attractions' %>
+                  <h5 class="card-title"><%= result.name %></h5>
+                  <p class="card-text">
+                    <strong>City:</strong> <%= result.city.name %><br>
+                    <strong>Rating:</strong> <%= result.rating %>/5
+                  </p>
+                  <%= link_to "View Details", attraction_path(result), class: "btn btn-primary" %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      
+      <div class="d-flex justify-content-center mt-4">
+        <%= paginate @results %>
+      </div>
+    <% else %>
+      <p>No results found.</p>
+    <% end %>
+  <% else %>
+    <!-- 显示所有类别的结果 -->
+    <% if @countries.any? || @cities.any? || @attractions.any? %>
+      <% if @countries.any? %>
+        <h2>Countries</h2>
+        <div class="row">
+          <% @countries.each do |country| %>
+            <div class="col-md-4 mb-4">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title"><%= country.name %></h5>
+                  <p class="card-text">
+                    <strong>Continent:</strong> <%= country.continent %><br>
+                    <strong>Language:</strong> <%= country.language %>
+                  </p>
+                  <%= link_to "View Details", country_path(country), class: "btn btn-primary" %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+      
+      <% if @cities.any? %>
+        <h2>Cities</h2>
+        <div class="row">
+          <% @cities.each do |city| %>
+            <div class="col-md-4 mb-4">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title"><%= city.name %></h5>
+                  <p class="card-text">
+                    <strong>Country:</strong> <%= city.country.name %><br>
+                    <strong>Population:</strong> <%= number_with_delimiter(city.population) %>
+                  </p>
+                  <%= link_to "View Details", city_path(city), class: "btn btn-primary" %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+      
+      <% if @attractions.any? %>
+        <h2>Attractions</h2>
+        <div class="row">
+          <% @attractions.each do |attraction| %>
+            <div class="col-md-4 mb-4">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title"><%= attraction.name %></h5>
+                  <p class="card-text">
+                    <strong>City:</strong> <%= attraction.city.name %><br>
+                    <strong>Rating:</strong> <%= attraction.rating %>/5
+                  </p>
+                  <%= link_to "View Details", attraction_path(attraction), class: "btn btn-primary" %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    <% else %>
+      <p>No results found.</p>
+    <% end %>
+  <% end %>
+<% else %>
+  <p>Enter a search term to begin.</p>
+<% end %>
+
+<%= link_to "Back to Home", root_path, class: "btn btn-secondary mt-3" %>

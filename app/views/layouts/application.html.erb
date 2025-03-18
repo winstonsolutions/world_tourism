@@ -1,23 +1,58 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for(:title) || "World Tourism" %></title>
+    <title>World Tourism</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="apple-mobile-web-app-capable" content="yes">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= yield :head %>
-
-    <link rel="manifest" href="/manifest.json">
-    <link rel="icon" href="/icon.png" type="image/png">
-    <link rel="icon" href="/icon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="/icon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
-    <%= yield %>
+    <!-- 导航菜单 -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
+      <div class="container">
+        <a class="navbar-brand" href="<%= root_path %>">World Tourism</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="<%= root_path %>">Countries</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="<%= about_path %>">About</a>
+            </li>
+          </ul>
+          <!-- 搜索表单 -->
+          <form class="d-flex ms-auto" action="<%= search_path %>" method="get">
+            <select name="category" class="form-select me-2" style="width: 120px;">
+              <option value="">All</option>
+              <option value="countries">Countries</option>
+              <option value="cities">Cities</option>
+              <option value="attractions">Attractions</option>
+            </select>
+            <input class="form-control me-2" type="search" name="query" placeholder="Search" required>
+            <button class="btn btn-light" type="submit">Search</button>
+          </form>
+        </div>
+      </div>
+    </nav>
+    
+    <div class="container">
+      <%= yield %>
+    </div>
+    
+    <footer class="bg-light py-3 mt-5">
+      <div class="container text-center">
+        <p>© <%= Time.now.year %> World Tourism Explorer</p>
+      </div>
+    </footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>

@@ -1,0 +1,45 @@
+<div class="mb-4">
+  <h1>
+    <%= @city.name %>
+    <% if @city.is_capital %>
+      <span class="badge bg-success">Capital</span>
+    <% end %>
+  </h1>
+  
+  <div class="card mb-4">
+    <div class="card-body">
+      <p><strong>Country:</strong> <%= link_to @city.country.name, country_path(@city.country) %></p>
+      <p><strong>Population:</strong> <%= number_with_delimiter(@city.population) %></p>
+      <p><strong>Number of Attractions:</strong> <%= @city.attractions.count %></p>
+    </div>
+  </div>
+  
+  <h2>Attractions in <%= @city.name %></h2>
+  
+  <% if @attractions.any? %>
+    <div class="row">
+      <% @attractions.each do |attraction| %>
+        <div class="col-md-6 mb-3">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title"><%= attraction.name %></h5>
+              <p class="card-text">
+                <strong>Rating:</strong> <%= attraction.rating %>/5<br>
+                <strong>Entrance Fee:</strong> <%= number_to_currency(attraction.entrance_fee) %>
+              </p>
+              <%= link_to "View Details", attraction_path(attraction), class: "btn btn-sm btn-primary" %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    
+    <div class="d-flex justify-content-center mt-4">
+      <%= paginate @attractions %>
+    </div>
+  <% else %>
+    <p>No attractions found for this city.</p>
+  <% end %>
+  
+  <%= link_to "Back to #{@city.country.name}", country_path(@city.country), class: "btn btn-secondary mt-3" %>
+</div>

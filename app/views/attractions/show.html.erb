@@ -1,0 +1,17 @@
+<div class="mb-4">
+  <h1><%= @attraction.name %></h1>
+  
+  <div class="card mb-4">
+    <div class="card-body">
+      <p><strong>City:</strong> <%= link_to @attraction.city.name, city_path(@attraction.city) %></p>
+      <p><strong>Country:</strong> <%= link_to @attraction.city.country.name, country_path(@attraction.city.country) %></p>
+      <p><strong>Rating:</strong> <%= @attraction.rating %>/5</p>
+      <p><strong>Entrance Fee:</strong> <%= number_to_currency(@attraction.entrance_fee) %></p>
+      
+      <h5>Description:</h5>
+      <p><%= @attraction.description %></p>
+    </div>
+  </div>
+  
+  <%= link_to "Back to #{@attraction.city.name}", city_path(@attraction.city), class: "btn btn-secondary" %>
+</div>

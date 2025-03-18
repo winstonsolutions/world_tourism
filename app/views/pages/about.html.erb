@@ -1,0 +1,58 @@
+<div class="mb-4">
+  <h1>About World Tourism Explorer</h1>
+  
+  <div class="card mb-4">
+    <div class="card-body">
+      <h2>Data Sources</h2>
+      
+      <h4>1. Countries Dataset (CSV Source)</h4>
+      <p>
+        This application uses a CSV file containing information about countries around the world.
+        The dataset includes essential information such as:
+      </p>
+      <ul>
+        <li>Country name</li>
+        <li>Continent</li>
+        <li>Currency</li>
+        <li>Primary language</li>
+      </ul>
+      <p>This CSV serves as the foundation for our database, providing real geographic data about countries.</p>
+      
+      <h4>2. Faker Generated Data (Ruby Gem)</h4>
+      <p>
+        To complement the countries dataset, we use the Faker gem to generate realistic but fictional data for:
+      </p>
+      <ul>
+        <li>Cities within each country (including population figures and capital city status)</li>
+        <li>Tourist attractions within each city (including names, descriptions, visitor ratings, and entrance fees)</li>
+      </ul>
+      
+      <h2>Database Structure and Integration</h2>
+      <p>The data is organized into three related tables:</p>
+      
+      <h4>1. Countries Table</h4>
+      <ul>
+        <li>Populated from the CSV source</li>
+        <li>Primary fields: id, name, continent, currency, language</li>
+      </ul>
+      
+      <h4>2. Cities Table</h4>
+      <ul>
+        <li>Generated using Faker, linked to countries from the CSV</li>
+        <li>Primary fields: id, name, is_capital, population, country_id (foreign key)</li>
+      </ul>
+      
+      <h4>3. Attractions Table</h4>
+      <ul>
+        <li>Generated using Faker, linked to the generated cities</li>
+        <li>Primary fields: id, name, description, rating, entrance_fee, city_id (foreign key)</li>
+      </ul>
+      
+      <p>This structure creates two one-to-many relationships:</p>
+      <ul>
+        <li>One country has many cities</li>
+        <li>One city has many attractions</li>
+      </ul>
+    </div>
+  </div>
+</div>
