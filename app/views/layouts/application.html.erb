@@ -43,13 +43,17 @@
       </div>
     </nav>
     
-    <div class="container">
-      <%= yield %>
-    </div>
+    <!-- 将主要内容包裹在 main 标签内 -->
+    <main>
+      <div class="container">
+        <%= yield %>
+      </div>
+    </main>
     
-    <footer class="bg-light py-3 mt-5">
+    <!-- 添加页脚部分 -->
+    <footer>
       <div class="container text-center">
-        <p>© <%= Time.now.year %> World Tourism Explorer</p>
+        <p>© 2025 World Tourism Explorer</p>
       </div>
     </footer>
     

@@ -13,3 +13,29 @@
  *= require_tree .
  *= require_self
  */
+
+/* 设置整体页面布局为 flex 布局，使页脚能够"粘"在底部 */
+html, body {
+  height: 100%; /* 设置 html 和 body 占满整个视口高度 */
+  margin: 0;    /* 移除默认边距 */
+}
+
+body {
+  display: flex;           /* 使用弹性布局 */
+  flex-direction: column;  /* 设置主轴方向为垂直方向 */
+  min-height: 100vh;       /* 至少占满整个视口高度 */
+}
+
+/* 页面主要内容区域，将会自动扩展占据可用空间 */
+main {
+  flex: 1 0 auto;  /* 扩展占据所有可用空间，但不允许收缩，保持其基本大小 */
+}
+
+/* 页脚样式 */
+footer {
+  flex-shrink: 0;        /* 防止页脚被压缩 */
+  padding: 20px 0;       /* 为页脚添加一些内边距 */
+  background-color: #f8f9fa; /* 可选：设置背景颜色 */
+  text-align: center;    /* 居中文本 */
+  margin-top: 20px;      /* 与上方内容保持一定间距 */
+}
