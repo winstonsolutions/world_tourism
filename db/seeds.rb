@@ -170,15 +170,15 @@ puts "Created #{City.count} cities"
 puts "Creating attractions..."
 cities = City.all
 cities.each do |city|
-  # 生成更符合地点特色的景点名称
+  # Generate more location-specific attraction names
   attraction_types = ['Museum', 'Park', 'Monument', 'Cathedral', 'Castle', 'Palace', 'Square', 'Tower', 'Bridge', 'Garden']
   
-  # 为每个城市创建2-6个景点
+  # Create 2-6 attractions for each city
   num_attractions = rand(2..6)
   num_attractions.times do
     attraction_type = attraction_types.sample
     
-    # 生成更真实的名称
+    # Generate more realistic names
     name = if ['Museum', 'Park', 'Cathedral', 'Castle'].include?(attraction_type)
              "#{city.name} #{attraction_type}"
            else
