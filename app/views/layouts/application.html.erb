@@ -22,10 +22,10 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link" href="<%= root_path %>">Countries</a>
+              <a class="nav-link <%= 'active' if current_page?(root_path) %>" href="<%= root_path %>">Countries</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="<%= about_path %>">About</a>
+              <a class="nav-link <%= 'active' if current_page?(about_path) %>" href="<%= about_path %>">About</a>
             </li>
           </ul>
           <!-- Search Form -->
