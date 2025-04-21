@@ -61,5 +61,5 @@ end
 
 gem 'faker'          # For generating fake data
 gem 'kaminari'       # For pagination
-gem 'bootstrap', '~> 5.3.0'  # For styling
+gem 'bootstrap', '~> 5.3.5'  # For styling
 gem 'sassc-rails'    # For Sass support
